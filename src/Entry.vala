@@ -37,6 +37,7 @@ public class Entry {
         foreach(Val item in this.values) {
             item.print();
         }
+        print("\n");
     }
 
     public Val get_value(string key) {
@@ -95,4 +96,13 @@ public class Entry {
         }
     }
     
+    public bool compare(Entry entry) {
+        if(this.uid == entry.uid) {
+            print("Entry is the same obj");
+            return true;
+        } 
+        
+        print("Entry is different");
+        return false;
+    }
 }

@@ -21,6 +21,10 @@ public class Val {
     }
 
     public void print() {
-        stdout.printf("%s: %s \n", this.key, this.value.print(true));
+        stdout.printf("- %s: %s \n", this.key, this.value.print(true));
+    }
+
+    public void print_key() {
+        stdout.printf("- %s \n", this.key);
     }
 }

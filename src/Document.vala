@@ -29,11 +29,36 @@ public class Document {
         this.updated_at = get_real_time() / 1000000;
     }
 
+    public void get_all_keys() {
+        foreach(Entry entry in this.entries) {
+            entry.get_uid();
+            foreach(Val item in entry.values) {
+                item.print_key();
+            }
+        }
+        print("\n");
+    }
+
+    public UnrolledLinkedList<Variant> get_values_by_key(string key) {
+        UnrolledLinkedList<Variant> result = new UnrolledLinkedList<Variant>();
+        foreach(Entry entry in this.entries) {
+            foreach(Val item in entry.values) {
+                if(item.key == key) {
+                    result.add(item.value);
+                }
+            }
+        }
+
+        return result;
+    }
+
     public void print_entry() {
         stdout.printf("Created At: %lld \n", this.created_at);
         stdout.printf("Updated At: %lld \n", this.updated_at);
+        print("\n");
         foreach(Entry item in this.entries) {
             item.print_values();
         }
+        print("\n");
     }
 }
