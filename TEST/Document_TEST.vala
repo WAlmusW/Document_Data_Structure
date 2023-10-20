@@ -46,7 +46,7 @@ public class Document_TEST {
 
         // Create more Val objects and add them to another Entry
         Val val16 = new Val("username", 4);
-        Val val17 = new Val("domisili", 40000);
+        Val val17 = new Val("domisili", "jakarta");
         Val val18 = new Val("phone", 12345);
         Val val19 = new Val("asal", 65);
         Val val20 = new Val("prodi", 13139);
