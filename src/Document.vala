@@ -11,7 +11,7 @@ public class Document {
 
     private UniqueID uid_gen = new UniqueID();
 
-    public Document(string name) { //Const
+    public Document(string name) {
         this.name = name;
         this.id = counter++;
         this.entries = new UnrolledLinkedList<Entry>();
@@ -55,10 +55,12 @@ public class Document {
     public HashSet<string> get_column_keys() {
         HashSet<string> keys = new HashSet<string>();
         foreach(Entry entry in this.entries) {
-            foreach (Val item in entry,values){
+            foreach(Val item in entry.values){
                 keys.add(item.key);
             }
         }
+
+        return keys;
     }
 
     public UnrolledLinkedList<Entry> filter_by_key(string key) {

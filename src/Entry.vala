@@ -82,13 +82,16 @@ public class Entry {
     public void merge(Entry otherEntry) {
         foreach(Val item in otherEntry.values) {
             if(this.has_key(item.key)) {
-                this.remove
+                this.remove_key(item.key);
+                this.add(item);
+            } else {
+                this.add(item);
             }
         }
     }
 
     public void remove_key(string key) {
-        for(int i = 0; i < this.values.length; i++) {
+        for(int i = 0; i < this.values.size; i++) {
             if(this.values[i].key == key) {
                 this.values.remove_at(i);
                 break;
