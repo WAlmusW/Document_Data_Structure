@@ -11,7 +11,7 @@ public class Document {
 
     private UniqueID uid_gen = new UniqueID();
 
-    public Document(string name) {
+    public Document(string name) { //Const
         this.name = name;
         this.id = counter++;
         this.entries = new UnrolledLinkedList<Entry>();
@@ -46,6 +46,26 @@ public class Document {
                 if(item.key == key) {
                     result.add(item.value);
                 }
+            }
+        }
+
+        return result;
+    }
+
+    public HashSet<string> get_column_keys() {
+        HashSet<string> keys = new HashSet<string>();
+        foreach(Entry entry in this.entries) {
+            foreach (Val item in entry,values){
+                keys.add(item.key);
+            }
+        }
+    }
+
+    public UnrolledLinkedList<Entry> filter_by_key(string key) {
+        UnrolledLinkedList<Entry> result = new UnrolledLinkedList<Entry>();
+        foreach(Entry entry in this.entries) {
+            if(entry.has_key(key)) {
+                result.add(entry);
             }
         }
 

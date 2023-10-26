@@ -79,20 +79,20 @@ public class Entry {
         return false;
     }
 
-    public void remove_key(string key) {
-        Val itemToRemove = null;
-    
-        // Find the item to remove
-        foreach (Val item in this.values) {
-            if (item.key == key) {
-                itemToRemove = item;
-                break;
+    public void merge(Entry otherEntry) {
+        foreach(Val item in otherEntry.values) {
+            if(this.has_key(item.key)) {
+                this.remove
             }
         }
-    
-        if (itemToRemove != null) {
-            // Use remove on the UnrolledLinkedList
-            this.values.remove(itemToRemove);
+    }
+
+    public void remove_key(string key) {
+        for(int i = 0; i < this.values.length; i++) {
+            if(this.values[i].key == key) {
+                this.values.remove_at(i);
+                break;
+            }
         }
     }
     
@@ -104,5 +104,12 @@ public class Entry {
         
         print("Entry is different");
         return false;
+    }
+
+    public void update_value(Val item) {
+        if(this.has_key(item.key)) {
+            this.remove_key(item.key);
+            this.add(item);
+        }
     }
 }
